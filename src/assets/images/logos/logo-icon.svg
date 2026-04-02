@@ -1,0 +1,10 @@
+<svg width="35" height="32" viewBox="0 0 35 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1.5" y="0.5" width="32" height="31" rx="7" fill="url(#grad_icon)"/>
+  <path d="M10 7h8a7 7 0 0 1 0 14h-3l6 9h-6l-5-9v9h-5V7h5zm0 5v5h6a2.5 2.5 0 0 0 0-5h-6z" fill="white"/>
+  <defs>
+    <linearGradient id="grad_icon" x1="1.5" y1="0.5" x2="33.5" y2="31.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#635BFF"/>
+      <stop offset="100%" stop-color="#4b44d9"/>
+    </linearGradient>
+  </defs>
+</svg>
