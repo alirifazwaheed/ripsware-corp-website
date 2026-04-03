@@ -11,7 +11,7 @@ const mainRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboards/dashboard1',
+        redirectTo: '/front-pages/homepage',
         pathMatch: 'full',
       },
       {

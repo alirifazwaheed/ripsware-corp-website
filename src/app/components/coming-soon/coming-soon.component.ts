@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="coming-soon">
       <div class="content">
-        <h1>RIPSWARE</h1>
+        <img src="assets/images/logos/RIPSWARE_LOGO_WHITE-01.png" alt="RIPSWARE" class="logo" />
         <p class="tagline">Digital &amp; IT Services</p>
         <div class="divider"></div>
         <h2>Coming Soon</h2>
@@ -48,6 +48,12 @@ import { Component } from '@angular/core';
       font-weight: 800;
       letter-spacing: 0.3rem;
       margin: 0 0 0.5rem;
+    }
+
+    .logo {
+      max-width: 280px;
+      height: auto;
+      margin-bottom: 0.5rem;
     }
 
     .tagline {
