@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
+import { environment } from '../environments/environment';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 
-export const routes: Routes = [
+const mainRoutes: Routes = [
   {
     path: '',
     component: FullComponent,
@@ -103,3 +105,9 @@ export const routes: Routes = [
     redirectTo: 'authentication/error',
   },
 ];
+
+const comingSoonRoutes: Routes = [
+  { path: '**', component: ComingSoonComponent },
+];
+
+export const routes: Routes = environment.comingSoon ? comingSoonRoutes : mainRoutes;
