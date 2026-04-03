@@ -8,9 +8,10 @@ import { RouterModule } from '@angular/router';
   template: `
     <a [routerLink]="['/']">
       <img
-        src="./assets/images/logos/logo.svg"
+        src="./assets/images/logos/RIPSWARE_LOGO_WHITE-01.png"
         class="align-middle m-2"
-        alt="logo"
+        alt="RIPSWARE"
+        style="max-width: 160px; height: auto;"
       />
     </a>
   `,
