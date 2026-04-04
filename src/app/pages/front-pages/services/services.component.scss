@@ -1,7 +1,8 @@
-.portfolio-page {
+.services-page {
   .page-banner {
     background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 50%, #0d1137 100%);
     padding: 100px 0 60px;
+    text-align: center;
 
     .section-tag {
       display: inline-block;
@@ -18,75 +19,60 @@
       font-size: 44px;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
 
-      @media (max-width: 768px) { font-size: 32px; }
+      @media (max-width: 768px) {
+        font-size: 32px;
+      }
     }
 
     .banner-subtitle {
       font-size: 18px;
       color: rgba(255, 255, 255, 0.7);
-      max-width: 580px;
+      max-width: 640px;
       margin: 0 auto;
       line-height: 1.6;
     }
   }
 
-  .case-card {
+  .service-category-card {
     border-radius: 16px !important;
     border: 1px solid var(--mat-sys-outline-variant);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      border-color: var(--mat-sys-primary);
+
+      .cat-icon-wrapper {
+        background: var(--mat-sys-primary);
+        color: #fff;
+      }
+    }
   }
 
-  .industry-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
-    background: var(--mat-sys-tertiary-container);
-    color: var(--mat-sys-on-tertiary-container);
-    font-size: 12px;
-    font-weight: 600;
+  .cat-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
   }
 
-  .tech-chip {
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: var(--mat-sys-surface-container);
-    color: var(--mat-sys-on-surface);
-    font-size: 12px;
-    font-weight: 500;
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .outcomes-box {
-    background: var(--mat-sys-surface-container-low);
-    border-radius: 12px;
-    padding: 24px;
-  }
-
-  .outcome-item {
+  .service-list-item {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-
-  .clients-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
-    align-items: center;
-  }
-
-  .client-item {
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-
-    &:hover { opacity: 1; }
-
-    img {
-      max-height: 40px;
-      max-width: 120px;
-    }
   }
 
   .cta-box {
@@ -94,7 +80,9 @@
     border-radius: 20px;
     padding: 56px 48px;
 
-    @media (max-width: 768px) { padding: 40px 24px; }
+    @media (max-width: 768px) {
+      padding: 40px 24px;
+    }
   }
 
   .cta-btn-white {

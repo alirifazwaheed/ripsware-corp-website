@@ -4,6 +4,7 @@ import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { BrandingComponent } from 'src/app/layouts/full/vertical/sidebar/branding.component';
 import { MaterialModule } from 'src/app/material.module';
+import { serviceCategories, ServiceCategory } from '../ripsware-data';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,6 @@ import { MaterialModule } from 'src/app/material.module';
     RouterLink,
     RouterOutlet,
     CommonModule,
-    BrandingComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
@@ -24,17 +24,18 @@ export class HomePageComponent {
   hideCloserBtn: boolean = true;
   showBackToTop: boolean;
   isTopbarFixed: boolean;
+  servicesOpen = false;
+  mobileServicesOpen = false;
+  serviceCategories: ServiceCategory[] = serviceCategories;
+
   hideCloser() {
     this.hideCloserBtn = false;
   }
   isActiveRoute(route: string): boolean {
     return this.router.url.includes(`/front-pages/${route}`);
   }
-  getNavigate() {
-
-  }
   gethomepage() {
-    this.router.navigate(['/front-pages/homepage'])
+    this.router.navigate(['/front-pages/homepage']);
   }
 
   scrollToTop(): void {

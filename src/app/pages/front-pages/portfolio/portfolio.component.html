@@ -1,59 +1,51 @@
 <div class="portfolio-page">
-  <div class="banner-portfolio bg-extra-light p-y-56">
-    <div class="container">
-      <div class="d-flex justify-content-between flex-wrap align-items-center height-row">
-        <h2 class="section-sub-title f-s-44 lh-normal">Explore Our Latest Works</h2>
-        <div class="d-flex align-items-center gap-6 breadcrumb">
-          <a [routerLink]="'/front-pages/homepage'"
-            class="f-s-14 text-uppercase text-decoration-none f-w-700">RIPSWARE</a>
-          <i-tabler name="chevron-right" class="icon-18 d-flex"></i-tabler>
-          <a [routerLink]="'/front-pages/portfolio'"
-            class="f-s-14 text-uppercase text-primary text-decoration-none f-w-700">
-            Portfolio
-          </a>
-        </div>
-      </div>
+
+  <!-- Banner -->
+  <div class="page-banner">
+    <div class="container text-center">
+      <span class="section-tag">Portfolio</span>
+      <h1 class="banner-title">Our Work</h1>
+      <p class="banner-subtitle">
+        Real projects, real results. See how we help businesses solve complex challenges with technology.
+      </p>
     </div>
   </div>
 
-  <div class="cards-list p-y-48 p-x-0">
+  <!-- Case Studies -->
+  <div class="case-studies spacing-top-bottom">
     <div class="container">
-      <div class="d-flex align-items-center justify-content-between gap-3 flex-wrap m-b-24">
-        <div class="d-flex align-items-center gap-8 m-b-10">
-          <h5 class="f-w-500 f-s-20">Portfolio</h5>
-          <div class="p-x-6 p-y-2 rounded-pill bg-secondary text-white">
-            <div class="f-s-14 lh-sm">{{ filteredCount }} </div>
-          </div>
-        </div>
-
-        <!-- Search bar pushed to the right -->
-        <mat-form-field appearance="outline" class="search-bar-style hide-hint">
-          <mat-icon matPrefix>search</mat-icon>
-          <input matInput placeholder="Search Photos" [(ngModel)]="searchText" (input)="onSearchChange()" />
-        </mat-form-field>
-      </div>
-      <div class="row">
-        @for(productcard of filteredCardImgs; track productcard.id) {
-        <div class="col-sm-6 col-lg-4">
-          <mat-card class="cardWithShadow productcard overflow-hidden b-1 rounded">
-            <a routerLink="/widgets/cards">
-              <img src="{{ productcard.imgSrc }}" alt="imgSrc" class="w-100 object-cover" height="220" mat-card-image />
-            </a>
-            <mat-card-content class="p-b-24 p-t-12 position-relative">
-              <mat-card-title class="mat-headline-2 f-s-16 m-b-4">
-                <div class="d-flex align-items-center justify-content-between">
-                  <!-- Left Side: Text Content -->
-                  <div>
-                    <h6 class="f-s-16 lh-sm f-w-600">{{ productcard.title }}</h6>
-                    <p class="f-s-12 f-w-400 m-y-0">{{ productcard.date }}</p>
+      <div class="row g-4">
+        @for (cs of caseStudies; track cs.title) {
+        <div class="col-lg-12">
+          <mat-card class="case-card">
+            <mat-card-content class="p-32">
+              <div class="row align-items-start">
+                <div class="col-lg-7">
+                  <span class="industry-badge m-b-12">{{ cs.industry }}</span>
+                  <h2 class="f-s-28 f-w-700 m-b-8">{{ cs.title }}</h2>
+                  <p class="f-s-14 text-muted m-b-4"><strong>Client:</strong> {{ cs.client }}</p>
+                  <h4 class="f-s-16 f-w-600 m-b-4 m-t-20">The Challenge</h4>
+                  <p class="f-s-14 text-muted lh-lg m-b-16">{{ cs.problem }}</p>
+                  <h4 class="f-s-16 f-w-600 m-b-4">Our Solution</h4>
+                  <p class="f-s-14 text-muted lh-lg m-b-16">{{ cs.solution }}</p>
+                  <div class="d-flex flex-wrap gap-8 m-b-16">
+                    @for (tech of cs.technologies; track tech) {
+                    <span class="tech-chip">{{ tech }}</span>
+                    }
                   </div>
-
-                  <!-- Right Side: Icon -->
-                  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
                 </div>
-              </mat-card-title>
+                <div class="col-lg-5">
+                  <div class="outcomes-box">
+                    <h4 class="f-s-16 f-w-600 m-b-16">Key Outcomes</h4>
+                    @for (outcome of cs.outcomes; track outcome) {
+                    <div class="outcome-item m-b-10">
+                      <i-tabler name="circle-check" class="icon-18 text-success flex-shrink-0"></i-tabler>
+                      <span class="f-s-14">{{ outcome }}</span>
+                    </div>
+                    }
+                  </div>
+                </div>
+              </div>
             </mat-card-content>
           </mat-card>
         </div>
@@ -62,7 +54,36 @@
     </div>
   </div>
 
-  <div class="footer">
-    <app-footer></app-footer>
+  <!-- Clients -->
+  <div class="clients-section bg-extra-light spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-32">
+        <h2 class="f-s-36 f-w-700">Trusted By</h2>
+      </div>
+      <div class="clients-grid">
+        @for (client of clientLogos; track client.name) {
+        <div class="client-item" [matTooltip]="client.name + ' - ' + (client.industry || '')">
+          <img [src]="client.src" [alt]="client.name" />
+        </div>
+        }
+      </div>
+    </div>
   </div>
+
+  <!-- CTA -->
+  <div class="spacing-top-bottom">
+    <div class="container">
+      <div class="cta-box text-center">
+        <h2 class="f-s-36 f-w-700 text-white m-b-12">Have a Similar Project?</h2>
+        <p class="f-s-18 text-white m-b-24" style="opacity:0.9;">
+          Let us help you build something great. Contact us for a free project consultation.
+        </p>
+        <a mat-flat-button class="cta-btn-white" [routerLink]="['/front-pages/contact']">
+          Start a Conversation
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
 </div>

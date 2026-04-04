@@ -1,26 +1,126 @@
 .footer-content {
-  .footer-first-content {
+  /* CTA Banner */
+  .footer-cta {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 64px 0;
 
-    .first-section,
-    .third-section {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-
+    .cta-inner {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 48px;
     }
 
-    .first-section {
-      left: 0;
+    .cta-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px;
     }
 
-    .third-section {
-      right: 0;
+    .cta-sub {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+
+    .cta-btn {
+      font-size: 16px;
+      padding: 12px 32px;
+      border-radius: 8px;
     }
   }
 
+  /* Footer Main */
+  .footer-main {
+    background: #0d0d1a;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .footer-logo {
+    max-width: 160px;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+
+  .social-icon {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .footer-heading {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
   .footer-link {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.2s;
+
     &:hover {
       color: var(--mat-sys-primary) !important;
+    }
+  }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+
+    .footer-contact-icon {
+      color: var(--mat-sys-primary);
+      flex-shrink: 0;
+    }
+  }
+
+  /* Bottom Bar */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .footer-content .footer-cta {
+    padding: 40px 0;
+
+    .cta-inner {
+      padding: 32px 24px;
+    }
+
+    .cta-title {
+      font-size: 24px;
     }
   }
 }

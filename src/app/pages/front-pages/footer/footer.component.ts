@@ -1,10 +1,9 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { MaterialModule } from 'src/app/material.module';
 import { RouterLink, RouterModule } from '@angular/router';
 import { BrandingComponent } from 'src/app/layouts/full/vertical/sidebar/branding.component';
+
 @Component({
   selector: 'app-footer',
   imports: [
@@ -13,88 +12,26 @@ import { BrandingComponent } from 'src/app/layouts/full/vertical/sidebar/brandin
     RouterLink,
     RouterModule,
     BrandingComponent
-],
+  ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  constructor() { }
-
-  applicationsItems = [
-    {
-      title: 'Kanban',
-      href: "/apps/kanban"
-    },
-    {
-      title: 'Invoice List',
-      href: "/apps/invoice/list"
-    },
-    {
-      title: 'eCommerce',
-      href: "/apps/product/shop"
-    },
-    {
-      title: 'Chats',
-      href: "/apps/chat"
-    },
-    {
-      title: 'Tickets',
-      href: "/apps/tickets"
-    },
-    {
-      title: 'Blog',
-      href: "/apps/blog/post"
-    },
+  servicesLinks = [
+    { title: 'IT Support', href: '/front-pages/services/it-support' },
+    { title: 'Infrastructure', href: '/front-pages/services/infrastructure' },
+    { title: 'Software Development', href: '/front-pages/services/software-development' },
+    { title: 'Mobile Development', href: '/front-pages/services/mobile-development' },
+    { title: 'Design & Branding', href: '/front-pages/services/design-branding' },
+    { title: 'Digital Marketing', href: '/front-pages/services/digital-marketing' },
   ];
 
-  formsItems = [
-    {
-      title: 'Form Layout',
-      href: "/forms/form-layouts"
-    },
-    {
-      title: 'Form Horizontal',
-      href: "/forms/form-horizontal"
-    },
-    {
-      title: 'Form Wizard',
-      href: "/forms/form-wizard"
-    },
-    {
-      title: 'Form Vertical',
-      href: "/forms/form-vertical"
-    },
-    {
-      title: 'Form Toastr',
-      href: "/forms/form-toastr"
-    },
-  ];
-
-  tablesItems = [
-    {
-      title: 'Basic Table',
-      href: "/tables/basic-table"
-    },
-    {
-      title: 'Multi Header Footer Table',
-      href: "/tables/multi-header-footer-table"
-    },
-    {
-      title: 'Pagination Table',
-      href: "/tables/pagination-table"
-    },
-    {
-      title: 'Dynamic Table',
-      href: "/tables/dynamic-table"
-    },
-    {
-      title: 'HTTP Table',
-      href: "/tables/http-table"
-    },
-    {
-      title: 'Sortable Table',
-      href: "/tables/sortable-table"
-    },
+  companyLinks = [
+    { title: 'About Us', href: '/front-pages/about' },
+    { title: 'Portfolio', href: '/front-pages/portfolio' },
+    { title: 'Technology', href: '/front-pages/technology' },
+    { title: 'Industries', href: '/front-pages/industries' },
+    { title: 'Contact', href: '/front-pages/contact' },
   ];
 
   socialIcons = [
@@ -103,7 +40,5 @@ export class FooterComponent {
     { src: 'assets/images/front-end/icon-instagram.svg', tooltip: 'Instagram' },
   ];
 
-  getRouterLink(path: string): string {
-    return path.startsWith('/') ? path : '/' + path;
-  }
+  currentYear = new Date().getFullYear();
 }

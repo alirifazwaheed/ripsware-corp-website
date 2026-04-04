@@ -10,34 +10,72 @@
               <app-branding></app-branding>
             </div>
 
-            <div class="navigation-tab d-none d-lg-flex justify-content-between toolBarContent">
+            <div class="navigation-tab d-none d-lg-flex align-items-center toolBarContent">
 
-              <button mat-button class="m-x-8 f-s-15 f-w-600 nav-item" [routerLink]="['/front-pages/about']"
+              <button mat-button class="m-x-4 f-s-15 f-w-600 nav-item" [routerLink]="['/front-pages/homepage']"
+                [class.selected]="isActiveRoute('homepage')">
+                Home
+              </button>
+
+              <!-- Services dropdown -->
+              <div class="nav-dropdown-wrapper"
+                (mouseenter)="servicesOpen = true"
+                (mouseleave)="servicesOpen = false">
+                <button mat-button class="m-x-4 f-s-15 f-w-600 nav-item"
+                  [routerLink]="['/front-pages/services']"
+                  [class.selected]="isActiveRoute('services')">
+                  Services
+                  <i-tabler name="chevron-down" class="icon-16 m-l-4"></i-tabler>
+                </button>
+                @if (servicesOpen) {
+                <div class="services-mega-menu">
+                  <div class="mega-menu-grid">
+                    @for (cat of serviceCategories; track cat.id) {
+                    <a class="mega-menu-item" [routerLink]="['/front-pages/services', cat.id]"
+                      (click)="servicesOpen = false">
+                      <i-tabler [name]="cat.icon" class="icon-20 mega-item-icon"></i-tabler>
+                      <div>
+                        <div class="f-s-14 f-w-600">{{ cat.title }}</div>
+                        <div class="f-s-12 text-muted m-t-4">{{ cat.description }}</div>
+                      </div>
+                    </a>
+                    }
+                  </div>
+                </div>
+                }
+              </div>
+
+              <button mat-button class="m-x-4 f-s-15 f-w-600 nav-item" [routerLink]="['/front-pages/industries']"
+                [class.selected]="isActiveRoute('industries')">
+                Industries
+              </button>
+
+              <button mat-button class="m-x-4 f-s-15 f-w-600 nav-item" [routerLink]="['/front-pages/portfolio']"
+                [class.selected]="isActiveRoute('portfolio')">
+                Portfolio
+              </button>
+
+              <button mat-button class="m-x-4 f-s-15 f-w-600 nav-item" [routerLink]="['/front-pages/technology']"
+                [class.selected]="isActiveRoute('technology')">
+                Technology
+              </button>
+
+              <button mat-button class="m-x-4 f-s-15 f-w-600 nav-item" [routerLink]="['/front-pages/about']"
                 [class.selected]="isActiveRoute('about')">
                 About Us
               </button>
-              <button mat-button class="m-x-8 f-s-14 f-w-600 nav-item" [class.selected]="isActiveRoute('blog')"
-                [routerLink]="['/front-pages/blog']">
-                Blogs
-              </button>
-              <button mat-button class="m-x-8 f-s-15 f-w-600 nav-item" [routerLink]="['/front-pages/portfolio']"
-                [class.selected]="isActiveRoute('portfolio')">
-                Portfolio
-                <span class="bg-light-primary text-primary rounded-7 f-w-600 p-x-8 p-y-4 f-s-12 m-l-4">
-                  New
-                </span>
-              </button>
 
-              <button mat-button class="m-x-8 f-s-15 f-w-600 nav-item" [class.selected]="isActiveRoute('contact')"
+              <button mat-button class="m-x-4 f-s-15 f-w-600 nav-item" [class.selected]="isActiveRoute('contact')"
                 [routerLink]="['/front-pages/contact']">
                 Contact
               </button>
 
             </div>
             <div class="d-none d-lg-flex">
-              <button mat-flat-button color="primary" [routerLink]="['/authentication/login']">
-                Log In
-              </button>
+              <a mat-flat-button color="primary" [routerLink]="['/front-pages/contact']"
+                class="get-quote-btn">
+                Get a Quote
+              </a>
             </div>
 
             <button mat-icon-button (click)="filterNavRight.toggle()" class="d-flex d-lg-none">
@@ -59,38 +97,80 @@
           <div class="branding p-0">
             <app-branding></app-branding>
           </div>
-          <button mat-mini-fab aria-label="Example icon button with a heart icon" (click)="filterNavRight.toggle()">
+          <button mat-mini-fab aria-label="Close menu" (click)="filterNavRight.toggle()">
             <mat-icon>close</mat-icon>
           </button>
         </div>
 
         <mat-list role="list">
           <mat-list-item role="listitem">
-            <button mat-button class="text-dark" [routerLink]="['/front-pages/about']"
-              [class.selected]="isActiveRoute('about')">
-              About Us
-            </button></mat-list-item>
+            <button mat-button class="text-dark" [routerLink]="['/front-pages/homepage']"
+              [class.selected]="isActiveRoute('homepage')" (click)="filterNavRight.close()">
+              Home
+            </button>
+          </mat-list-item>
+
+          <!-- Mobile Services with expandable sub-items -->
           <mat-list-item role="listitem">
-            <button mat-button class="text-dark" [class.selected]="isActiveRoute('blogs')"
-              [routerLink]="['/front-pages/blog']">
-              Blogs
-            </button></mat-list-item>
+            <button mat-button class="text-dark w-100 d-flex justify-content-between"
+              (click)="mobileServicesOpen = !mobileServicesOpen">
+              Services
+              <i-tabler [name]="mobileServicesOpen ? 'chevron-up' : 'chevron-down'" class="icon-16"></i-tabler>
+            </button>
+          </mat-list-item>
+          @if (mobileServicesOpen) {
+            <mat-list-item role="listitem">
+              <a mat-button class="text-dark p-l-24" [routerLink]="['/front-pages/services']"
+                (click)="filterNavRight.close()">
+                All Services
+              </a>
+            </mat-list-item>
+            @for (cat of serviceCategories; track cat.id) {
+            <mat-list-item role="listitem">
+              <a mat-button class="text-dark p-l-24 f-s-13" [routerLink]="['/front-pages/services', cat.id]"
+                (click)="filterNavRight.close()">
+                {{ cat.title }}
+              </a>
+            </mat-list-item>
+            }
+          }
+
+          <mat-list-item role="listitem">
+            <button mat-button class="text-dark" [routerLink]="['/front-pages/industries']"
+              [class.selected]="isActiveRoute('industries')" (click)="filterNavRight.close()">
+              Industries
+            </button>
+          </mat-list-item>
           <mat-list-item role="listitem">
             <button mat-button class="text-dark" [routerLink]="['/front-pages/portfolio']"
-              [class.selected]="isActiveRoute('portfolio')">
+              [class.selected]="isActiveRoute('portfolio')" (click)="filterNavRight.close()">
               Portfolio
-              <span class="bg-light-primary text-primary rounded f-w-600 p-6 p-y-4 f-s-12">
-                New
-              </span>
-            </button></mat-list-item>
+            </button>
+          </mat-list-item>
           <mat-list-item role="listitem">
-            <button mat-button class="text-dark " [class.selected]="isActiveRoute('contact')"
-              [routerLink]="['/front-pages/contact']">
+            <button mat-button class="text-dark" [routerLink]="['/front-pages/technology']"
+              [class.selected]="isActiveRoute('technology')" (click)="filterNavRight.close()">
+              Technology
+            </button>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <button mat-button class="text-dark" [routerLink]="['/front-pages/about']"
+              [class.selected]="isActiveRoute('about')" (click)="filterNavRight.close()">
+              About Us
+            </button>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <button mat-button class="text-dark" [routerLink]="['/front-pages/contact']"
+              [class.selected]="isActiveRoute('contact')" (click)="filterNavRight.close()">
               Contact
-            </button></mat-list-item>
+            </button>
+          </mat-list-item>
           <mat-list-item role="listitem" class="w-100">
-            <a mat-flat-button color="primary" class="w-100" [routerLink]="'/authentication/login'">Get
-              Started</a></mat-list-item>
+            <a mat-flat-button color="primary" class="w-100" [routerLink]="['/front-pages/contact']"
+              (click)="filterNavRight.close()">
+              Get a Quote
+            </a>
+          </mat-list-item>
         </mat-list>
       </div>
     </mat-sidenav>
