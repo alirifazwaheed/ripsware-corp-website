@@ -98,27 +98,27 @@ interface productcards {
   export const team = [
     {
       id: 1,
-      name: 'Alex Martinez',
+      name: 'Ali Rifaz',
       position: 'CEO & Co-Founder',
-      image: 'assets/images/front-end/user1.jpg',
+      image: 'assets/images/front-end/nerd1.png',
     },
     {
       id: 2,
-      name: 'Jordan Nguyen',
+      name: 'Ibrahim',
       position: 'CTO & Co-Founder',
-      image: 'assets/images/front-end/user2.jpg',
+      image: 'assets/images/front-end/nerd2.png',
     },
     {
       id: 3,
-      name: 'Taylor Roberts',
+      name: 'Mariam',
       position: 'Product Manager',
-      image: 'assets/images/front-end/user3.jpg',
+      image: 'assets/images/front-end/nerd3.png',
     },
     {
       id: 4,
-      name: 'Morgan Patel',
+      name: 'Ahmed',
       position: 'Lead Developer',
-      image: 'assets/images/front-end/user4.jpg',
+      image: 'assets/images/front-end/nerd4.png',
     },
   ];
 

@@ -106,6 +106,11 @@ const mainRoutes: Routes = [
   },
 ];
 
+// Preview route available in dev: http://localhost:4200/coming-soon
+if (!environment.comingSoon) {
+  mainRoutes.splice(mainRoutes.length - 1, 0, { path: 'coming-soon', component: ComingSoonComponent });
+}
+
 const comingSoonRoutes: Routes = [
   { path: '**', component: ComingSoonComponent },
 ];
