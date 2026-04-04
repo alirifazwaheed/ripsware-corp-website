@@ -3,11 +3,8 @@ import { Component } from '@angular/core';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { MaterialModule } from 'src/app/material.module';
 import { RouterLink } from '@angular/router';
-import { ImagesComponent } from '../images/images.component';
 import { FooterComponent } from '../footer/footer.component';
-import { CardSliderComponent } from '../card-slider/card-slider.component';
-import { PricePageComponent } from '../price-page/price-page.component';
-import { frameworks, stats } from '../front-end-datatype';
+import { serviceCategories, industries, techStack, clientLogos, caseStudies } from '../ripsware-data';
 
 @Component({
   selector: 'app-home-page-details',
@@ -16,26 +13,22 @@ import { frameworks, stats } from '../front-end-datatype';
     TablerIconsModule,
     CommonModule,
     RouterLink,
-    ImagesComponent,
-   PricePageComponent ,
     FooterComponent,
-    CardSliderComponent
   ],
   templateUrl: './home-page-details.component.html',
   styleUrl: './home-page-details.component.scss',
 })
 export class HomePageDetailsComponent {
-  selectedTab: string = 'team';
-  
-   hideToolbar:boolean=true;
+  serviceCategories = serviceCategories;
+  industries = industries.slice(0, 4);
+  techStack = techStack;
+  clientLogos = clientLogos;
+  caseStudies = caseStudies.slice(0, 2);
 
-  frameworks=frameworks;
-
-  stats = stats;
-
-  selectTab(tab: string): void {
-    this.selectedTab = tab;
-  }
-
-
+  stats = [
+    { value: '7+', label: 'Service Areas', icon: 'category-2', color: 'text-primary' },
+    { value: '50+', label: 'Projects Delivered', icon: 'checkup-list', color: 'text-success' },
+    { value: '99.9%', label: 'Uptime SLA', icon: 'shield-check', color: 'text-warning' },
+    { value: '24/7', label: 'Support Available', icon: 'headset', color: 'text-error' },
+  ];
 }

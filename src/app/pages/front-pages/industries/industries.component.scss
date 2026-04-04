@@ -1,4 +1,4 @@
-.portfolio-page {
+.industries-page {
   .page-banner {
     background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 50%, #0d1137 100%);
     padding: 100px 0 60px;
@@ -26,67 +26,64 @@
     .banner-subtitle {
       font-size: 18px;
       color: rgba(255, 255, 255, 0.7);
-      max-width: 580px;
+      max-width: 620px;
       margin: 0 auto;
       line-height: 1.6;
     }
   }
 
-  .case-card {
+  .industry-card {
     border-radius: 16px !important;
     border: 1px solid var(--mat-sys-outline-variant);
-  }
+    transition: all 0.3s ease;
 
-  .industry-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
-    background: var(--mat-sys-tertiary-container);
-    color: var(--mat-sys-on-tertiary-container);
-    font-size: 12px;
-    font-weight: 600;
-  }
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 
-  .tech-chip {
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: var(--mat-sys-surface-container);
-    color: var(--mat-sys-on-surface);
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  .outcomes-box {
-    background: var(--mat-sys-surface-container-low);
-    border-radius: 12px;
-    padding: 24px;
-  }
-
-  .outcome-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .clients-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
-    align-items: center;
-  }
-
-  .client-item {
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-
-    &:hover { opacity: 1; }
-
-    img {
-      max-height: 40px;
-      max-width: 120px;
+      .ind-icon {
+        background: var(--mat-sys-primary);
+        color: #fff;
+      }
     }
+  }
+
+  .ind-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+  }
+
+  .svc-link-card {
+    border-radius: 12px !important;
+    border: 1px solid var(--mat-sys-outline-variant);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      border-color: var(--mat-sys-primary);
+    }
+  }
+
+  .svc-link-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
   }
 
   .cta-box {

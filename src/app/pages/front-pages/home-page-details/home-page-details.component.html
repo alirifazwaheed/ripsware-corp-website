@@ -1,329 +1,302 @@
 <div class="home-page-details">
-  <div class="banner bg-extra-light overflow-hidden p-t-56">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 m-b-48">
-          <div>
-            <div>
-              <h1 class="f-s-56 section-sub-title m-b-24 lh-base f-w-500">
-                <b>A feature-packed dashboard</b>
-                built for developers needs.
-              </h1>
-            </div>
-            <div class="d-flex align-items-center gap-12 m-b-24">
-              <div class="avatar-group flex-shrink-0">
-                <img src="/assets/images/profile/user-1.jpg" alt="user1" class="rounded-circle" width="40" />
-                <img src="/assets/images/profile/user-2.jpg" alt="user2" class="rounded-circle" width="40" />
-                <img src="/assets/images/profile/user-3.jpg" alt="user3" class="rounded-circle" width="40" />
-              </div>
-              <p class="f-s-16 f-w-500 m-0">
-                52,589+ developers & agencies using our templates
-              </p>
-            </div>
-            <div class="d-flex gap-12 m-b-24 framework">
-              @for (framework of frameworks; track framework.tooltip) {
-              <mat-card class="rounded-8 m-0 icon-54 justify-content-center align-items-center cursor-pointer"
-                matTooltip="{{ framework.tooltip }}" matTooltipPosition="below">
-                <img [src]="framework.src" [alt]="framework.alt" width="28" height="28" />
-              </mat-card>
-              }
-            </div>
-            <button mat-flat-button color="primary" [routerLink]="['/authentication/login']">
-              Log In
-            </button>
-          </div>
-        </div>
-        <div class="col-lg-6 d-none d-lg-flex">
-          <div class="banner-slider overflow-hidden">
-            <img src="/assets/images/front-end/banner-image.png" alt="" class="img-fluid" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="support spacing-top p-b-32">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-md-5 m-b-48">
-          <h2 class="m-b-24 f-s-44 section-sub-title lh-normal">Over 45,000 clients and counting.</h2>
-          <p class="m-b-24 m-t-0 f-s-18 lh-normal">
-            Pellentesque varius semper odio non pretium. Nullam sagittis neque
-            orci, eu elementum enim.
+  <!-- ─── Hero Section ──────────────────────────────────────────── -->
+  <div class="hero-section overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="container position-relative" style="z-index: 2;">
+      <div class="row align-items-center" style="min-height: 85vh;">
+        <div class="col-lg-7 m-b-48">
+          <span class="hero-badge m-b-16">IT & Digital Services</span>
+          <h1 class="hero-title m-b-24">
+            Empowering Businesses with<br>
+            <span class="text-primary">Technology & Innovation</span>
+          </h1>
+          <p class="f-s-18 hero-subtitle m-b-32 lh-lg">
+            From IT support and infrastructure to custom software, mobile apps, AI solutions, 
+            and digital marketing — we deliver end-to-end technology services that drive growth.
           </p>
-          <a href="javascript:void(0)" class="f-s-16 f-w-700 d-inline-block p-b-8 text-decoration-none b-b-2">Request a
-            Callback</a>
+          <div class="d-flex gap-16 flex-wrap">
+            <a mat-flat-button color="primary" class="hero-cta" [routerLink]="['/front-pages/services']">
+              Explore Our Services
+            </a>
+            <a mat-stroked-button color="primary" class="hero-cta-secondary" [routerLink]="['/front-pages/contact']">
+              Get a Free Consultation
+            </a>
+          </div>
         </div>
-
-        <div class="col-md-6 right-side-content">
-          <div class="row g-4 stat-section">
-            @for (stat of stats; track stat) {
-            <div class="col-lg-6 col-sm-6 col-12 grid-col m-b-48 ">
-              <div class="d-flex flex-col gap-16">
-                <div [ngClass]="
-                    !stat.bg_color.startsWith('--')
-                      ? 'bg-light-' + stat.bg_color
-                      : ''
-                  " class="rounded-8 d-flex justify-content-center align-items-center icon-48" [ngStyle]="{
-                    'background-color': stat.bg_color.startsWith('--')
-                      ? 'var(' + stat.bg_color + ')'
-                      : ''
-                  }">
-                  <i-tabler [name]="stat.icon" class="icon-24" [ngClass]="stat.color"></i-tabler>
-                </div>
-                <h4 class="f-s-22 f-w-600 lh-base">
-                  {{ stat.label }}
-                </h4>
-
-                <p class="f-s-16 description m-0">
-                  {{ stat.description }}
-                </p>
-              </div>
+        <div class="col-lg-5 d-none d-lg-flex justify-content-center">
+          <div class="hero-visual">
+            <div class="hero-card hero-card-1">
+              <i-tabler name="shield-check" class="icon-32 text-success"></i-tabler>
+              <span class="f-s-14 f-w-600">99.9% Uptime</span>
             </div>
-            }
+            <div class="hero-card hero-card-2">
+              <i-tabler name="code" class="icon-32 text-primary"></i-tabler>
+              <span class="f-s-14 f-w-600">Custom Software</span>
+            </div>
+            <div class="hero-card hero-card-3">
+              <i-tabler name="brain" class="icon-32 text-warning"></i-tabler>
+              <span class="f-s-14 f-w-600">AI Solutions</span>
+            </div>
+            <div class="hero-card hero-card-4">
+              <i-tabler name="headset" class="icon-32 text-error"></i-tabler>
+              <span class="f-s-14 f-w-600">24/7 Support</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="navigation bg-extra-light spacing-top-bottom">
+  <!-- ─── Stats Bar ─────────────────────────────────────────────── -->
+  <div class="stats-bar spacing-top-bottom">
     <div class="container">
-      <div class="nav-bar">
-        <div class="custom-tab-bar row">
-          <div class="col-md-3 col-sm-6 m-b-10">
-            <button mat-flat-button class="rounded btn-bg w-100" [class.active]="selectedTab === 'team'"
-              (click)="selectTab('team')">
-              <div class="d-flex align-items-center justify-content-center p-y-12 p-x-24 gap-10 f-s-16 f-w-600 ">
-                <i class="material-icons">groups</i> Team Scheduling
+      <div class="row g-4 justify-content-center">
+        @for (stat of stats; track stat.label) {
+        <div class="col-lg-3 col-sm-6">
+          <mat-card class="stat-card text-center h-100">
+            <mat-card-content class="p-24">
+              <div class="stat-icon-wrap m-b-12" [ngClass]="'stat-icon-' + stat.color">
+                <i-tabler [name]="stat.icon" class="icon-28"></i-tabler>
               </div>
-            </button>
-          </div>
-          <div class="col-md-3 col-sm-6 m-b-10">
-            <button mat-flat-button class="rounded btn-bg w-100" [class.active]="selectedTab === 'payments'"
-              (click)="selectTab('payments')">
-              <div class="d-flex align-items-center justify-content-center p-y-12 p-x-24 gap-10 f-s-16 f-w-600">
-                <i class="material-icons">account_balance</i>
-
-                Payments
-              </div>
-            </button>
-          </div>
-          <div class="col-md-3 col-sm-6 m-b-10">
-            <button mat-flat-button class="rounded btn-bg w-100" [class.active]="selectedTab === 'embedding'"
-              (click)="selectTab('embedding')">
-              <div class="d-flex align-items-center justify-content-center p-y-12 p-x-24 gap-10 f-s-16 f-w-600">
-                <i-tabler name="library-photo" class="icon-24"></i-tabler>
-                Embedding
-              </div>
-            </button>
-          </div>
-          <div class="col-md-3 col-sm-6 m-b-10">
-            <button mat-flat-button class="rounded btn-bg w-100" [class.active]="selectedTab === 'workflows'"
-              (click)="selectTab('workflows')">
-              <div class="d-flex align-items-center justify-content-center p-y-12 p-x-24 gap-10 f-s-16 f-w-600">
-                <i-tabler name="category" class="icon-24"></i-tabler>
-                Workflows
-              </div>
-            </button>
-          </div>
-
+              <div class="f-s-36 f-w-700 m-b-4">{{ stat.value }}</div>
+              <div class="f-s-14 text-muted f-w-500">{{ stat.label }}</div>
+            </mat-card-content>
+          </mat-card>
         </div>
+        }
+      </div>
+    </div>
+  </div>
 
-        <!-- Tab content -->
-        <div class="tab-content m-t-48">
-          <ng-container>
-            <div>
-              <div class="row align-items-center">
-                <div class="col-md-6">
-                  <div class="left-side-content rounded-12 p-32 bg-light-primary">
-                    <img src="assets/images/front-end/tabsimage.png" alt="slider-group" class="img-fluid w-100" />
-                  </div>
-                </div>
-                <div class="col-md-6 m-y-30">
-                  <div class="p-l-8">
-                    <h2 class="f-s-40 section-sub-title lh-normal">Defend your focus</h2>
-
-                    <mat-accordion class="accordion w-100 m-y-24 d-block">
-                      <mat-expansion-panel class="expansion m-b-0 b-b-1" [expanded]="
-                          selectedTab === 'team' || selectedTab === 'workflows'
-                        ">
-                        <mat-expansion-panel-header>
-                          <mat-panel-title class="f-s-18 f-w-600">
-                            Combine teammate schedules
-                          </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <p class="description f-s-16 m-0">
-                          Factor in availability for required attendees, and
-                          skip checking for conflicts for optional attendees.
-                        </p>
-                      </mat-expansion-panel>
-
-                      <mat-expansion-panel class="expansion m-b-0 b-b-1" [expanded]="selectedTab === 'payments'">
-                        <mat-expansion-panel-header class="m-y-0 m-r-24">
-                          <mat-panel-title class="f-s-18 f-w-600">
-                            Factor in outside colleagues
-                          </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <p class="description f-s-16 m-0">
-                          Factor in availability for required attendees, and
-                          skip checking for conflicts for optional attendees.
-                        </p>
-                      </mat-expansion-panel>
-
-                      <mat-expansion-panel class="expansion m-b-0 b-b-1" [expanded]="selectedTab === 'embedding'">
-                        <mat-expansion-panel-header class="m-y-0 m-r-24">
-                          <mat-panel-title class="f-s-18 f-w-600">
-                            Round robin pooling
-                          </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <p class="description f-s-16 m-0">
-                          Factor in availability for required attendees, and
-                          skip checking for conflicts for optional attendees.
-                        </p>
-                      </mat-expansion-panel>
-                    </mat-accordion>
-
-                    <button mat-flat-button color="primary">
-                      Learn More
-                    </button>
-                  </div>
-                </div>
+  <!-- ─── Services Overview ─────────────────────────────────────── -->
+  <div class="services-section spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-48">
+        <span class="section-tag">What We Do</span>
+        <h2 class="f-s-44 section-sub-title lh-normal m-b-16">Our Services</h2>
+        <p class="f-s-18 text-muted m-auto" style="max-width: 640px;">
+          Comprehensive IT and digital solutions tailored to your business needs.
+        </p>
+      </div>
+      <div class="row g-4">
+        @for (cat of serviceCategories; track cat.id) {
+        <div class="col-lg-4 col-md-6">
+          <mat-card class="service-card h-100 cursor-pointer" [routerLink]="['/front-pages/services', cat.id]">
+            <mat-card-content class="p-24">
+              <div class="service-icon-wrapper m-b-16">
+                <i-tabler [name]="cat.icon" class="icon-32"></i-tabler>
               </div>
-            </div>
-          </ng-container>
+              <h3 class="f-s-20 f-w-600 m-b-8">{{ cat.title }}</h3>
+              <p class="f-s-14 text-muted m-b-16 lh-lg">{{ cat.description }}</p>
+              <div class="d-flex align-items-center gap-8 text-primary f-w-600 f-s-14">
+                Learn more <i-tabler name="arrow-right" class="icon-16"></i-tabler>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Industries We Serve ───────────────────────────────────── -->
+  <div class="industries-section bg-extra-light spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-48">
+        <span class="section-tag">Industries</span>
+        <h2 class="f-s-44 section-sub-title lh-normal m-b-16">Industries We Serve</h2>
+        <p class="f-s-18 text-muted m-auto" style="max-width: 600px;">
+          Domain expertise across key sectors, delivering solutions that understand your challenges.
+        </p>
+      </div>
+      <div class="row g-4">
+        @for (ind of industries; track ind.title) {
+        <div class="col-lg-3 col-md-6">
+          <mat-card class="industry-card text-center h-100">
+            <mat-card-content class="p-24">
+              <div class="industry-icon m-b-16">
+                <i-tabler [name]="ind.icon" class="icon-36"></i-tabler>
+              </div>
+              <h4 class="f-s-18 f-w-600 m-b-8">{{ ind.title }}</h4>
+              <p class="f-s-14 text-muted m-0 lh-lg">{{ ind.description }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        }
+      </div>
+      <div class="text-center m-t-32">
+        <a mat-stroked-button color="primary" [routerLink]="['/front-pages/industries']">
+          View All Industries
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Technology Stack ──────────────────────────────────────── -->
+  <div class="tech-section spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-48">
+        <span class="section-tag">Technology</span>
+        <h2 class="f-s-44 section-sub-title lh-normal m-b-16">Technologies We Work With</h2>
+      </div>
+      <div class="tech-grid">
+        @for (tech of techStack; track tech.name) {
+        <div class="tech-item" [matTooltip]="tech.name">
+          <i-tabler [name]="tech.icon" class="icon-28"></i-tabler>
+          <span class="f-s-12 f-w-600 m-t-8">{{ tech.name }}</span>
+        </div>
+        }
+      </div>
+      <div class="text-center m-t-32">
+        <a mat-stroked-button color="primary" [routerLink]="['/front-pages/technology']">
+          Explore Our Tech Stack
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Case Studies Preview ──────────────────────────────────── -->
+  <div class="case-studies-section bg-extra-light spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-48">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="f-s-44 section-sub-title lh-normal m-b-16">Recent Work</h2>
+      </div>
+      <div class="row g-4">
+        @for (cs of caseStudies; track cs.title) {
+        <div class="col-lg-6">
+          <mat-card class="case-study-card h-100">
+            <mat-card-content class="p-24">
+              <span class="case-study-industry m-b-12">{{ cs.industry }}</span>
+              <h3 class="f-s-22 f-w-600 m-b-8">{{ cs.title }}</h3>
+              <p class="f-s-14 text-muted m-b-16 lh-lg">{{ cs.solution }}</p>
+              <div class="d-flex flex-wrap gap-8 m-b-16">
+                @for (tech of cs.technologies; track tech) {
+                <span class="tech-chip">{{ tech }}</span>
+                }
+              </div>
+              <div class="outcomes">
+                @for (outcome of cs.outcomes; track outcome) {
+                <div class="outcome-item">
+                  <i-tabler name="circle-check" class="icon-16 text-success"></i-tabler>
+                  <span class="f-s-13">{{ outcome }}</span>
+                </div>
+                }
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        }
+      </div>
+      <div class="text-center m-t-32">
+        <a mat-stroked-button color="primary" [routerLink]="['/front-pages/portfolio']">
+          View All Projects
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CTA Section ───────────────────────────────────────────── -->
+  <div class="cta-section spacing-top-bottom">
+    <div class="container">
+      <div class="cta-box text-center">
+        <h2 class="f-s-40 f-w-700 text-white m-b-16">Ready to Transform Your Business?</h2>
+        <p class="f-s-18 text-white m-b-32" style="opacity: 0.9;">
+          Let's discuss how Ripsware can help you achieve your technology goals.
+        </p>
+        <div class="d-flex gap-16 justify-content-center flex-wrap">
+          <a mat-flat-button class="cta-btn-white" [routerLink]="['/front-pages/contact']">
+            Get a Free Quote
+          </a>
+          <a mat-stroked-button class="cta-btn-outline" [routerLink]="['/front-pages/services']">
+            Explore Services
+          </a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="meet-our-team-sec bg-dark-200 spacing-top">
-    <app-images [hideToolbar]="hideToolbar"></app-images>
-  </div>
-
-  <div class="testimonial-sec card-slider spacing-top">
-    <app-card-slider></app-card-slider>
-  </div>
-
-  <div class="pricing spacing-top-bottom">
-    <app-price-page></app-price-page>
-  </div>
-
+  <!-- ─── FAQ Section ───────────────────────────────────────────── -->
   <div class="question spacing-bottom">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <h2 class="text-center f-s-44 section-sub-title lh-normal m-b-48">
-            Frequently asked questions
-          </h2>
+          <div class="text-center m-b-48">
+            <span class="section-tag">FAQ</span>
+            <h2 class="f-s-44 section-sub-title lh-normal">Frequently Asked Questions</h2>
+          </div>
           <mat-accordion class="accordion">
             <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
               <mat-expansion-panel-header>
                 <mat-panel-title class="f-s-18">
-                  What is included with my purchase?
+                  What industries does Ripsware serve?
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                We serve a wide range of industries including healthcare, finance &amp; banking, government,
+                telecom, retail, education, hospitality, and real estate. Our solutions are tailored to meet
+                the specific compliance, security, and operational needs of each sector.
               </p>
             </mat-expansion-panel>
 
             <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
               <mat-expansion-panel-header>
                 <mat-panel-title class="f-s-18">
-                  Are there any recurring fees?
+                  What types of IT support packages do you offer?
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                We offer flexible support packages ranging from single-outlet plans for small offices to
+                enterprise-grade multi-outlet packages. Each plan includes different SLA tiers, response times,
+                and coverage levels. Contact us for a customized quote.
               </p>
             </mat-expansion-panel>
 
             <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
               <mat-expansion-panel-header>
                 <mat-panel-title class="f-s-18">
-                  Can I use the template on multiple project?
+                  How long does a typical software development project take?
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Project timelines vary based on scope and complexity. A simple web application may take 4–8 weeks,
+                while a full enterprise solution can take 3–6 months. We follow agile methodologies and provide
+                detailed project timelines during the discovery phase.
               </p>
             </mat-expansion-panel>
+
             <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
               <mat-expansion-panel-header>
                 <mat-panel-title class="f-s-18">
-                  Can I customize the admin dashboard template to match my
-                  brand?
+                  Do you provide ongoing maintenance and support?
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Yes. All our projects include a post-launch support period. We also offer Annual Maintenance
+                Contracts (AMC) for continuous monitoring, updates, and technical support to keep your
+                systems running optimally.
               </p>
             </mat-expansion-panel>
+
             <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
               <mat-expansion-panel-header>
                 <mat-panel-title class="f-s-18">
-                  Are there any restrictions on using the template?
+                  Can you work with our existing systems and infrastructure?
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title class="f-s-18">
-                  How can I get support after purchase?
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Absolutely. We specialize in integrating with existing systems including ERP platforms (SAP, Odoo),
+                legacy applications, third-party APIs, and existing cloud infrastructure. Our goal is to enhance
+                what you have, not replace everything.
               </p>
             </mat-expansion-panel>
           </mat-accordion>
-          <div class="d-flex align-items-center justify-content-center m-t-48 p-t-10">
-            <p class="m-0 f-s-14 f-w-600 text-center rounded p-y-4 p-x-8 border-dash-content">
-              Still have a question?
-              <a [routerLink]="'https://discord.com/invite/XujgB8ww4n'" target="_blank" class="anchar-tag">Ask to discord</a>
-              or
-              <a href="https://ripsware.com/support" target="_blank" rel="noopener noreferrer"
-                class="anchar-tag">submit a ticket</a>
+
+          <div class="d-flex align-items-center justify-content-center m-t-48">
+            <p class="m-0 f-s-14 f-w-600 text-center rounded p-y-8 p-x-16 border-dash-content">
+              Have more questions?
+              <a [routerLink]="['/front-pages/contact']" class="anchar-tag text-primary">Contact us</a>
             </p>
           </div>
         </div>

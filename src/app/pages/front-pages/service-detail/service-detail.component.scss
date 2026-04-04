@@ -1,0 +1,103 @@
+.service-detail-page {
+  .page-banner {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 50%, #0d1137 100%);
+    padding: 100px 0 60px;
+
+    .breadcrumb-link {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 14px;
+      &:hover { color: #fff; }
+    }
+
+    .banner-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .banner-title {
+      font-size: 40px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+
+      @media (max-width: 768px) { font-size: 28px; }
+    }
+
+    .banner-subtitle {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+  }
+
+  .svc-card {
+    border-radius: 12px !important;
+    border: 1px solid var(--mat-sys-outline-variant);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      border-color: var(--mat-sys-primary);
+    }
+  }
+
+  .svc-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--mat-sys-primary);
+    opacity: 0.2;
+    margin-bottom: 8px;
+  }
+
+  .why-item {
+    padding: 24px;
+  }
+
+  .other-card {
+    border-radius: 12px !important;
+    border: 1px solid var(--mat-sys-outline-variant);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  .other-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cta-box {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0a1929 100%);
+    border-radius: 20px;
+    padding: 56px 48px;
+
+    @media (max-width: 768px) { padding: 40px 24px; }
+  }
+
+  .cta-btn-white {
+    background: #fff !important;
+    color: #0a1929 !important;
+    padding: 12px 32px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+  }
+}

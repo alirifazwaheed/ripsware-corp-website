@@ -1,54 +1,135 @@
 <div class="about-page">
 
-  <div class="banner-about bg-extra-light spacing-top-bottom">
+  <!-- Banner -->
+  <div class="page-banner">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <h2 class="m-b-24 f-s-44 lh-normal section-sub-title">
-            Get to know RIPSWARE
-            <span class="f-w-400">Digital & IT Services</span>
-          </h2>
-          <div class="d-flex align-items-start gap-16 btns">
-            <button [routerLink]="['/authentication/side-register']" mat-flat-button>
-              Create an Account
-            </button>
-            <button mat-stroked-button>
-              View Open Positions
-            </button>
-          </div>
-        </div>
-        <div class="col-lg-6 m-t-30">
-          <p class="f-s-16 lh-normal m-0">
-            Do you need a cutting-edge digital partner to transform your
-            enterprise IT infrastructure?
-            <span class="f-w-600">RIPSWARE </span>delivers
-            innovative software solutions, cloud services, and IT consulting
-            designed to accelerate your business growth.
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <span class="section-tag">About Us</span>
+          <h1 class="banner-title">Empowering Businesses Through Technology</h1>
+          <p class="banner-subtitle">
+            Founded in 2019, Ripsware is an IT &amp; digital services company committed to helping 
+            organizations modernize their technology, streamline operations, and accelerate growth.
           </p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="setup-process spacing-top p-b-48">
+  <!-- Mission & Vision -->
+  <div class="mission-section spacing-top-bottom">
     <div class="container">
-      <h2 class="section-sub-title f-s-44 lh-normal m-b-32 text-center">The hassle-free setup process</h2>
-      <div class="row">
-        @for(stat of support;track stat){
-        <div class="col-lg-3 col-sm-6">
-          <mat-card class="" [ngStyle]="{
-              'background-color': stat.bg_color.startsWith('--')
-                ? 'var(' + stat.bg_color + ')'
-                : stat.bg_color
-            }" [ngClass]="
-              !stat.bg_color.startsWith('--') ? 'bg-light-' + stat.bg_color : ''
-            ">
-            <mat-card-content>
-              <mat-card class="d-flex align-items-center justify-content-center icon-48 m-b-16">
-                <i-tabler [name]="stat.icon" class="icon-24" [ngClass]="stat.color"></i-tabler>
-              </mat-card>
-              <h4 class="f-s-22 m-b-16 f-w-600 lh-normal">{{ stat.label }}</h4>
-              <p class="f-s-14 m-y-0">{{ stat.description }}</p>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <mat-card class="mv-card h-100">
+            <mat-card-content class="p-32">
+              <div class="mv-icon m-b-16">
+                <i-tabler name="target" class="icon-32"></i-tabler>
+              </div>
+              <h3 class="f-s-24 f-w-700 m-b-12">Our Mission</h3>
+              <p class="f-s-16 text-muted m-0 lh-lg">
+                To deliver reliable, innovative technology solutions that empower businesses to 
+                operate more efficiently, serve their customers better, and compete in the digital age.
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-6">
+          <mat-card class="mv-card h-100">
+            <mat-card-content class="p-32">
+              <div class="mv-icon m-b-16">
+                <i-tabler name="eye" class="icon-32"></i-tabler>
+              </div>
+              <h3 class="f-s-24 f-w-700 m-b-12">Our Vision</h3>
+              <p class="f-s-16 text-muted m-0 lh-lg">
+                To be the most trusted IT partner for businesses across the region, known for 
+                technical excellence, transparent operations, and delivering measurable results.
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="values-section bg-extra-light spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-48">
+        <h2 class="f-s-36 f-w-700">Our Core Values</h2>
+      </div>
+      <div class="row g-4">
+        @for (val of values; track val.title) {
+        <div class="col-lg-3 col-md-6">
+          <div class="value-item text-center">
+            <div class="value-icon m-b-16">
+              <i-tabler [name]="val.icon" class="icon-32"></i-tabler>
+            </div>
+            <h4 class="f-s-18 f-w-600 m-b-8">{{ val.title }}</h4>
+            <p class="f-s-14 text-muted m-0 lh-lg">{{ val.description }}</p>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-section spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-40">
+        <h2 class="f-s-36 f-w-700">Our Journey</h2>
+        <p class="f-s-16 text-muted m-t-8">Key milestones that shaped who we are today.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-10">
+          <mat-card class="cardWithShadow journey-card">
+            <mat-card-content class="p-32">
+              <div class="timeline">
+                @for (ms of milestones; track ms.year; let last = $last) {
+                <div class="timeline-item journey-timeline-item d-flex overflow-hidden">
+                  <div class="time text-right f-s-14 f-w-700">{{ ms.year }}</div>
+                  <div class="point d-flex align-items-center">
+                    <span class="timeline-badge bg-{{ ms.color }} m-y-8"></span>
+                    @if (!last) {
+                      <span class="timline-border d-block"></span>
+                    }
+                  </div>
+                  <div class="desc">
+                    <span class="f-s-15 f-w-600 d-block m-b-4">{{ ms.title }}</span>
+                    <span class="f-s-13 text-muted lh-20">{{ ms.description }}</span>
+                  </div>
+                </div>
+                }
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team -->
+  <div class="team-section bg-extra-light spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-48">
+        <h2 class="f-s-36 f-w-700">Meet Our Leadership</h2>
+        <p class="f-s-16 text-muted">The people driving Ripsware's mission forward.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        @for (member of teamMembers; track member.name) {
+        <div class="col-lg-3 col-md-6">
+          <mat-card class="team-card text-center h-100">
+            <mat-card-content class="p-24">
+              <img [src]="member.image" [alt]="member.name" class="team-avatar m-b-16" />
+              <h4 class="f-s-18 f-w-600 m-b-4">{{ member.name }}</h4>
+              <p class="f-s-14 text-primary f-w-500 m-b-12">{{ member.role }}</p>
+              <p class="f-s-13 text-muted m-b-12">{{ member.experience }} experience</p>
+              <div class="d-flex flex-wrap gap-8 justify-content-center">
+                @for (skill of member.skills; track skill) {
+                <span class="skill-chip">{{ skill }}</span>
+                }
+              </div>
             </mat-card-content>
           </mat-card>
         </div>
@@ -57,165 +138,22 @@
     </div>
   </div>
 
-  <mat-divider></mat-divider>
-
-  <div class="every-number spacing-top-bottom">
+  <!-- CTA -->
+  <div class="spacing-top-bottom">
     <div class="container">
-      <div class="row">
-        <div class="col-md-5 m-b-30">
-          <h2 class="section-sub-title f-s-44 lh-normal">
-            A unique story in every number
-          </h2>
-        </div>
-        <div class="col-md-7">
-          <div class="d-flex align-items-center justify-content-between flex-wrap flex-shrink-0 gap-30 flex-wrap">
-            @for (history of records; track history) {
-            <div class="d-flex flex-col gap-16">
-              <h2 class="f-w-400 text-primary f-s-64 lh-base section-sub-title">{{ history.title }}</h2>
-              <p class="m-0 f-s-14">{{ history.subtitle }}</p>
-            </div>
-            }
-          </div>
+      <div class="cta-box text-center">
+        <h2 class="f-s-36 f-w-700 text-white m-b-12">Want to Work With Us?</h2>
+        <p class="f-s-18 text-white m-b-24" style="opacity:0.9;">
+          Whether you're looking for a technology partner or want to join our team, we'd love to hear from you.
+        </p>
+        <div class="d-flex gap-16 justify-content-center flex-wrap">
+          <a mat-flat-button class="cta-btn-white" [routerLink]="['/front-pages/contact']">
+            Get in Touch
+          </a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="meet-our-team-sec bg-dark-200 spacing-top">
-    <app-images [hideToolbar]="hideToolbar"></app-images>
-  </div>
-
-  <div class="testimonial-sec card-slider spacing-top">
-    <app-card-slider></app-card-slider>
-  </div>
-
-  <div class="pricing spacing-top-bottom">
-    <app-price-page></app-price-page>
-  </div>
-
-  <div class="question spacing-bottom">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <h2 class="text-center f-s-44 section-sub-title lh-normal m-b-48">
-            Frequently asked questions
-          </h2>
-          <mat-accordion class="accordion">
-            <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title class="f-s-18">
-                  What is included with my purchase?
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title class="f-s-18">
-                  Are there any recurring fees?
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title class="f-s-18">
-                  Can I use the template on multiple project?
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title class="f-s-18">
-                  Can I customize the admin dashboard template to match my
-                  brand?
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title class="f-s-18">
-                  Are there any restrictions on using the template?
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="expansion m-b-16 shadow-none rounded b-1">
-              <mat-expansion-panel-header>
-                <mat-panel-title class="f-s-18">
-                  How can I get support after purchase?
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </mat-expansion-panel>
-          </mat-accordion>
-          <div class="d-flex align-items-center justify-content-center m-t-48 p-t-10">
-            <p class="m-0 f-s-14 f-w-600 text-center rounded p-y-4 p-x-8 border-dash-content">
-              Still have a question?
-              <a [routerLink]="'invite/eMzE8F6Wqs'" class="anchar-tag">Ask to discord</a>
-              or
-              <a href="https://support.wrappixel.com/" target="_blank" rel="noopener noreferrer"
-                class="anchar-tag">submit a ticket</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <app-footer></app-footer>
-  </div>
+  <app-footer></app-footer>
 </div>

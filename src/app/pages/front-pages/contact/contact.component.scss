@@ -1,0 +1,54 @@
+.contact-page {
+  .page-banner {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 50%, #0d1137 100%);
+    padding: 100px 0 60px;
+
+    .section-tag {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 16px;
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .banner-title {
+      font-size: 44px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+
+      @media (max-width: 768px) { font-size: 32px; }
+    }
+
+    .banner-subtitle {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  .info-card {
+    border-radius: 12px !important;
+    border: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-card {
+    border-radius: 16px !important;
+    border: 1px solid var(--mat-sys-outline-variant);
+  }
+}

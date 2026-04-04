@@ -1,0 +1,75 @@
+<div class="packages-page">
+
+  <!-- Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <div class="d-flex align-items-center gap-8 m-b-16">
+        <a [routerLink]="['/front-pages/services']" class="breadcrumb-link">Services</a>
+        <i-tabler name="chevron-right" class="icon-14 text-white" style="opacity:0.5"></i-tabler>
+        <a [routerLink]="['/front-pages/services/it-support']" class="breadcrumb-link">IT Support</a>
+        <i-tabler name="chevron-right" class="icon-14 text-white" style="opacity:0.5"></i-tabler>
+        <span class="text-white f-s-14">Packages</span>
+      </div>
+      <h1 class="banner-title">IT Support Packages</h1>
+      <p class="banner-subtitle">
+        Choose a support plan that fits your business. All packages include dedicated account management and SLA-backed guarantees.
+      </p>
+    </div>
+  </div>
+
+  <!-- Packages Grid -->
+  <div class="packages-section spacing-top-bottom">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        @for (pkg of packages; track pkg.id) {
+        <div class="col-lg-4 col-md-6">
+          <mat-card class="package-card h-100" [class.popular]="pkg.popular">
+            @if (pkg.popular) {
+            <div class="popular-badge">Most Popular</div>
+            }
+            <mat-card-content class="p-32">
+              <h3 class="f-s-24 f-w-700 m-b-4">{{ pkg.title }}</h3>
+              <p class="f-s-14 text-muted m-b-20">{{ pkg.subtitle }}</p>
+
+              <div class="sla-badges d-flex gap-12 m-b-24">
+                <div class="sla-badge">
+                  <i-tabler name="shield-check" class="icon-16"></i-tabler>
+                  {{ pkg.sla }}
+                </div>
+                <div class="sla-badge">
+                  <i-tabler name="clock" class="icon-16"></i-tabler>
+                  {{ pkg.responseTime }}
+                </div>
+              </div>
+
+              <div class="features-list m-b-24">
+                @for (feature of pkg.features; track feature) {
+                <div class="feature-item">
+                  <i-tabler name="circle-check" class="icon-16 text-success flex-shrink-0"></i-tabler>
+                  <span class="f-s-14">{{ feature }}</span>
+                </div>
+                }
+              </div>
+
+              <a mat-flat-button [color]="pkg.popular ? 'primary' : 'accent'" class="w-100"
+                [routerLink]="['/front-pages/contact']"
+                [queryParams]="{ subject: 'IT Support - ' + pkg.title }">
+                Request a Quote
+              </a>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        }
+      </div>
+
+      <div class="text-center m-t-48">
+        <p class="f-s-16 text-muted m-b-16">Need a custom package? We can tailor a plan specifically for your organization.</p>
+        <a mat-stroked-button color="primary" [routerLink]="['/front-pages/contact']">
+          Contact Us for Custom Pricing
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

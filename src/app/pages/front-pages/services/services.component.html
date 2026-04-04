@@ -1,0 +1,78 @@
+<div class="services-page">
+
+  <!-- Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Our Services</span>
+        <h1 class="banner-title">End-to-End IT & Digital Solutions</h1>
+        <p class="banner-subtitle">
+          From IT support and infrastructure to custom software development, mobile apps, 
+          AI, and digital marketing — we cover the full spectrum.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Categories Grid -->
+  <div class="services-grid-section spacing-top-bottom">
+    <div class="container">
+      <div class="row g-4">
+        @for (cat of serviceCategories; track cat.id) {
+        <div class="col-lg-6">
+          <mat-card class="service-category-card h-100">
+            <mat-card-content class="p-32">
+              <div class="d-flex align-items-start gap-20">
+                <div class="cat-icon-wrapper flex-shrink-0">
+                  <i-tabler [name]="cat.icon" class="icon-36"></i-tabler>
+                </div>
+                <div class="flex-grow-1">
+                  <h2 class="f-s-24 f-w-700 m-b-8">{{ cat.title }}</h2>
+                  <p class="f-s-15 text-muted m-b-20 lh-lg">{{ cat.description }}</p>
+                  <div class="service-list">
+                    @for (svc of cat.services; track svc.title) {
+                    <div class="service-list-item">
+                      <i-tabler name="circle-check" class="icon-16 text-success flex-shrink-0"></i-tabler>
+                      <span class="f-s-14">{{ svc.title }}</span>
+                    </div>
+                    }
+                  </div>
+                  <div class="m-t-20">
+                    <a mat-flat-button color="primary" [routerLink]="['/front-pages/services', cat.id]">
+                      Learn More
+                      <i-tabler name="arrow-right" class="icon-16 m-l-8"></i-tabler>
+                    </a>
+                    @if (cat.id === 'it-support') {
+                    <a mat-stroked-button color="primary" class="m-l-12"
+                      [routerLink]="['/front-pages/services/it-support/packages']">
+                      View Packages
+                    </a>
+                    }
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="spacing-bottom">
+    <div class="container">
+      <div class="cta-box text-center">
+        <h2 class="f-s-36 f-w-700 text-white m-b-12">Not Sure Which Service You Need?</h2>
+        <p class="f-s-18 text-white m-b-24" style="opacity: 0.9;">
+          Talk to our team for a free consultation and tailored recommendation.
+        </p>
+        <a mat-flat-button class="cta-btn-white" [routerLink]="['/front-pages/contact']">
+          Schedule a Consultation
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

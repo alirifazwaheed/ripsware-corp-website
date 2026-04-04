@@ -1,0 +1,81 @@
+<div class="industries-page">
+
+  <!-- Banner -->
+  <div class="page-banner">
+    <div class="container text-center">
+      <span class="section-tag">Industries</span>
+      <h1 class="banner-title">Industries We Serve</h1>
+      <p class="banner-subtitle">
+        Deep domain expertise across key sectors. We understand the compliance, security, 
+        and operational requirements unique to each industry.
+      </p>
+    </div>
+  </div>
+
+  <!-- Industries Grid -->
+  <div class="industries-grid spacing-top-bottom">
+    <div class="container">
+      <div class="row g-4">
+        @for (ind of industries; track ind.title) {
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <mat-card class="industry-card h-100 text-center">
+            <mat-card-content class="p-24">
+              <div class="ind-icon m-b-16">
+                <i-tabler [name]="ind.icon" class="icon-40"></i-tabler>
+              </div>
+              <h3 class="f-s-18 f-w-600 m-b-8">{{ ind.title }}</h3>
+              <p class="f-s-14 text-muted m-0 lh-lg">{{ ind.description }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Services -->
+  <div class="related-services bg-extra-light spacing-top-bottom">
+    <div class="container">
+      <div class="text-center m-b-48">
+        <h2 class="f-s-36 f-w-700">How We Help These Industries</h2>
+        <p class="f-s-16 text-muted m-auto" style="max-width: 560px;">
+          Our service offerings are designed to address the unique needs of each industry.
+        </p>
+      </div>
+      <div class="row g-4">
+        @for (svc of topServices; track svc.id) {
+        <div class="col-lg-3 col-md-6">
+          <mat-card class="svc-link-card h-100 cursor-pointer" [routerLink]="['/front-pages/services', svc.id]">
+            <mat-card-content class="p-24 text-center">
+              <div class="svc-link-icon m-b-12">
+                <i-tabler [name]="svc.icon" class="icon-28"></i-tabler>
+              </div>
+              <h4 class="f-s-16 f-w-600 m-b-4">{{ svc.title }}</h4>
+              <div class="d-flex align-items-center justify-content-center gap-4 text-primary f-s-13 f-w-600 m-t-8">
+                Learn More <i-tabler name="arrow-right" class="icon-14"></i-tabler>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="spacing-top-bottom">
+    <div class="container">
+      <div class="cta-box text-center">
+        <h2 class="f-s-36 f-w-700 text-white m-b-12">Don't See Your Industry?</h2>
+        <p class="f-s-18 text-white m-b-24" style="opacity:0.9;">
+          We work with businesses across all sectors. Get in touch and let's discuss your specific needs.
+        </p>
+        <a mat-flat-button class="cta-btn-white" [routerLink]="['/front-pages/contact']">
+          Talk to Our Team
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>
