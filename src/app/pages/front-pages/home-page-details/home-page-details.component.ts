@@ -4,7 +4,7 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import { MaterialModule } from 'src/app/material.module';
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
-import { serviceCategories, industries, techStack, clientLogos, caseStudies } from '../ripsware-data';
+import { serviceCategories, techStack, clientLogos, caseStudies } from '../ripsware-data';
 
 @Component({
   selector: 'app-home-page-details',
@@ -20,13 +20,12 @@ import { serviceCategories, industries, techStack, clientLogos, caseStudies } fr
 })
 export class HomePageDetailsComponent {
   serviceCategories = serviceCategories;
-  industries = industries.slice(0, 4);
   techStack = techStack;
   clientLogos = clientLogos;
   caseStudies = caseStudies.slice(0, 2);
 
   stats = [
-    { value: '7+', label: 'Service Areas', icon: 'category-2', color: 'text-primary' },
+    { value: '6+', label: 'Years of Experience', icon: 'calendar-stats', color: 'text-primary' },
     { value: '50+', label: 'Projects Delivered', icon: 'checkup-list', color: 'text-success' },
     { value: '99.9%', label: 'Uptime SLA', icon: 'shield-check', color: 'text-warning' },
     { value: '24/7', label: 'Support Available', icon: 'headset', color: 'text-error' },

@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
           <span class="cursor">_</span>
         </div>
         <div class="contact">
-          <a href="mailto:info&#64;ripsware.com">info&#64;ripsware.com</a>
+          <a href="mailto:info&#64;ripsware.com">sales&#64;ripsware.com</a>
         </div>
       </div>
       <div class="corner corner-tl"></div>

@@ -8,7 +8,7 @@ import {
   withInMemoryScrolling,
 } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideClientHydration } from '@angular/platform-browser';
+
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -30,7 +30,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 // code view
 import { provideHighlightOptions } from 'ngx-highlightjs';
-import 'highlight.js/styles/atom-one-dark.min.css';
 
 export class CustomLoader implements TranslateLoader {
   constructor(private http: HttpClient, private prefix: string, private suffix: string) { }
@@ -67,7 +66,6 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding()
     ),
     provideHttpClient(withInterceptorsFromDi()),
-    provideClientHydration(),
     provideAnimationsAsync(),
     importProvidersFrom(
       FormsModule,

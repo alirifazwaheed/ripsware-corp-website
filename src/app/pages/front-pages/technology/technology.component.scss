@@ -45,28 +45,83 @@
 
   .tech-items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
   }
 
   .tech-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px 16px;
-    border-radius: 12px;
-    border: 1px solid var(--mat-sys-outline-variant);
-    background: #fff;
+    padding: 28px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    background: var(--mat-sys-surface-container-lowest);
     text-align: center;
-    transition: all 0.2s ease;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--mat-sys-on-surface-variant);
+    cursor: default;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .tech-icon-bubble {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .tech-name {
+      position: relative;
+      z-index: 1;
+    }
 
     &:hover {
-      border-color: var(--mat-sys-primary);
+      border-color: rgba(99, 102, 241, 0.25);
+      transform: translateY(-6px);
+      box-shadow:
+        0 8px 30px rgba(99, 102, 241, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.04);
+
+      &::before { opacity: 1; }
+      &::after { opacity: 1; }
+
+      .tech-icon-bubble {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.18));
+        transform: scale(1.08);
+      }
+
       color: var(--mat-sys-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
   }
 

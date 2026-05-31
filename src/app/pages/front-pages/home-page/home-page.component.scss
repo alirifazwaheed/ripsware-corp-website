@@ -33,9 +33,11 @@
     top: 100%;
     left: 0;
     width: 620px;
-    background: #fff;
+    background: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
+    border: 1px solid var(--mat-sys-outline-variant);
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 32px rgba(2, 6, 23, 0.6);
     padding: 16px;
     z-index: 1000;
     animation: fadeInDown 0.2s ease;

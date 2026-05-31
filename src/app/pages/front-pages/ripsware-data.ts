@@ -235,12 +235,12 @@ export const techStack: TechItem[] = [
 // ─── Client Logos ──────────────────────────────────────────────
 
 export const clientLogos: ClientLogo[] = [
-  { name: 'Dhiraagu', src: 'assets/images/front-end/brand-1.svg', industry: 'Telecom' },
-  { name: 'Ooredoo', src: 'assets/images/front-end/brand-2.svg', industry: 'Telecom' },
-  { name: 'Bank of Maldives', src: 'assets/images/front-end/brand-3.svg', industry: 'Finance' },
-  { name: 'MWSC', src: 'assets/images/front-end/brand-4.svg', industry: 'Utilities' },
-  { name: 'STO', src: 'assets/images/front-end/brand-5.svg', industry: 'Commerce' },
-  { name: 'IGMH', src: 'assets/images/front-end/brand-6.svg', industry: 'Healthcare' },
+  { name: 'Chemlab', src: 'assets/images/front-end/trustedby/Chemlab.png', industry: 'General' },
+  { name: 'Secretariat of the Gadhdhoo Council', src: 'assets/images/front-end/trustedby/ecretariat of the Gadhdhoo Council.jpg', industry: 'General' },
+  { name: 'Ministry of Homeland Security and Technology', src: 'assets/images/front-end/trustedby/Ministry of Homeland Security and Technology.jpg', industry: 'General' },
+  { name: 'Ministry of Sports, Fitness and Recreation', src: 'assets/images/front-end/trustedby/Ministry of Sports, Fitness and Recreation.jpg', industry: 'General' },
+  { name: 'National Social Protection Agency', src: 'assets/images/front-end/trustedby/National Social Protection Agency.jpg', industry: 'General' },
+  { name: 'Regional Airports Company Limited', src: 'assets/images/front-end/trustedby/Regional Airports Company Limited.png', industry: 'General' },
 ];
 
 // ─── Case Studies ──────────────────────────────────────────────
@@ -314,9 +314,9 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Ahmed Naseer',
-    role: 'Lead Developer',
+    role: 'Supervisor - IT Support Services',
     image: 'assets/images/profile/user-4.jpg',
-    skills: ['Angular', 'ASP.NET', 'Flutter', 'PostgreSQL'],
+    skills: ['IT Support', 'Network Management', 'Customer Service'],
     experience: '7+ years',
   },
 ];

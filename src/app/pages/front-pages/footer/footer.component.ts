@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { MaterialModule } from 'src/app/material.module';
 import { RouterLink, RouterModule } from '@angular/router';
-import { BrandingComponent } from 'src/app/layouts/full/vertical/sidebar/branding.component';
 
 @Component({
   selector: 'app-footer',
@@ -11,7 +10,6 @@ import { BrandingComponent } from 'src/app/layouts/full/vertical/sidebar/brandin
     TablerIconsModule,
     RouterLink,
     RouterModule,
-    BrandingComponent
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',

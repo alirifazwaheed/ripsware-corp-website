@@ -11,45 +11,49 @@
     </div>
   </div>
 
-  <!-- Case Studies -->
-  <div class="case-studies spacing-top-bottom">
+  <!-- Projects Coming Soon -->
+  <div class="coming-soon-section spacing-top-bottom">
     <div class="container">
-      <div class="row g-4">
-        @for (cs of caseStudies; track cs.title) {
-        <div class="col-lg-12">
-          <mat-card class="case-card">
-            <mat-card-content class="p-32">
-              <div class="row align-items-start">
-                <div class="col-lg-7">
-                  <span class="industry-badge m-b-12">{{ cs.industry }}</span>
-                  <h2 class="f-s-28 f-w-700 m-b-8">{{ cs.title }}</h2>
-                  <p class="f-s-14 text-muted m-b-4"><strong>Client:</strong> {{ cs.client }}</p>
-                  <h4 class="f-s-16 f-w-600 m-b-4 m-t-20">The Challenge</h4>
-                  <p class="f-s-14 text-muted lh-lg m-b-16">{{ cs.problem }}</p>
-                  <h4 class="f-s-16 f-w-600 m-b-4">Our Solution</h4>
-                  <p class="f-s-14 text-muted lh-lg m-b-16">{{ cs.solution }}</p>
-                  <div class="d-flex flex-wrap gap-8 m-b-16">
-                    @for (tech of cs.technologies; track tech) {
-                    <span class="tech-chip">{{ tech }}</span>
-                    }
-                  </div>
-                </div>
-                <div class="col-lg-5">
-                  <div class="outcomes-box">
-                    <h4 class="f-s-16 f-w-600 m-b-16">Key Outcomes</h4>
-                    @for (outcome of cs.outcomes; track outcome) {
-                    <div class="outcome-item m-b-10">
-                      <i-tabler name="circle-check" class="icon-18 text-success flex-shrink-0"></i-tabler>
-                      <span class="f-s-14">{{ outcome }}</span>
-                    </div>
-                    }
-                  </div>
-                </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="coming-soon-card text-center">
+            <div class="coming-soon-icon-ring">
+              <div class="pulse-ring"></div>
+              <div class="pulse-ring delay-1"></div>
+              <div class="pulse-ring delay-2"></div>
+              <i-tabler name="rocket" class="icon-48 text-primary"></i-tabler>
+            </div>
+            <h2 class="f-s-36 f-w-700 m-b-12">Projects Launching Soon</h2>
+            <p class="f-s-16 text-muted lh-lg m-b-32" style="max-width: 480px; margin: 0 auto;">
+              We're putting the finishing touches on some exciting case studies. 
+              Check back soon to see how we're helping businesses transform with technology.
+            </p>
+            <div class="coming-soon-features">
+              <div class="cs-feature">
+                <i-tabler name="code" class="icon-24 text-primary"></i-tabler>
+                <span class="f-s-14 f-w-600">Web Apps</span>
               </div>
-            </mat-card-content>
-          </mat-card>
+              <div class="cs-feature">
+                <i-tabler name="device-mobile" class="icon-24 text-primary"></i-tabler>
+                <span class="f-s-14 f-w-600">Mobile Apps</span>
+              </div>
+              <div class="cs-feature">
+                <i-tabler name="server" class="icon-24 text-primary"></i-tabler>
+                <span class="f-s-14 f-w-600">Infrastructure</span>
+              </div>
+              <div class="cs-feature">
+                <i-tabler name="brain" class="icon-24 text-primary"></i-tabler>
+                <span class="f-s-14 f-w-600">AI Solutions</span>
+              </div>
+            </div>
+            <div class="m-t-32">
+              <a mat-flat-button color="primary" [routerLink]="['/front-pages/contact']" 
+                 style="padding: 12px 32px !important; font-size: 15px !important; border-radius: 8px !important;">
+                Discuss Your Project
+              </a>
+            </div>
+          </div>
         </div>
-        }
       </div>
     </div>
   </div>
