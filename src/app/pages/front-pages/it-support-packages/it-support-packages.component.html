@@ -12,60 +12,141 @@
       </div>
       <h1 class="banner-title">IT Support Packages</h1>
       <p class="banner-subtitle">
-        Choose a support plan that fits your business. All packages include dedicated account management and SLA-backed guarantees.
+        Managed ICT support for your office, servers and network — on a fixed monthly fee.
+        Choose the package that matches your team size, or let us scope one for you.
       </p>
     </div>
   </div>
 
-  <!-- Packages Grid -->
+  <!-- Package Cards -->
   <div class="packages-section spacing-top-bottom">
     <div class="container">
-      <div class="row g-4 justify-content-center">
+      <div class="row g-4">
         @for (pkg of packages; track pkg.id) {
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-3 col-md-6">
           <mat-card class="package-card h-100" [class.popular]="pkg.popular">
             @if (pkg.popular) {
             <div class="popular-badge">Most Popular</div>
             }
-            <mat-card-content class="p-32">
-              <h3 class="f-s-24 f-w-700 m-b-4">{{ pkg.title }}</h3>
-              <p class="f-s-14 text-muted m-b-20">{{ pkg.subtitle }}</p>
+            <mat-card-content class="p-24 d-flex flex-col h-100">
+              <h3 class="f-s-22 f-w-700 m-b-4">{{ pkg.title }}</h3>
+              <p class="f-s-13 text-muted m-b-16">{{ pkg.subtitle }}</p>
 
-              <div class="sla-badges d-flex gap-12 m-b-24">
-                <div class="sla-badge">
-                  <i-tabler name="shield-check" class="icon-16"></i-tabler>
-                  {{ pkg.sla }}
+              <div class="business-size m-b-16">
+                <i-tabler name="users" class="icon-16"></i-tabler>
+                {{ pkg.businessSize }}
+              </div>
+
+              <!-- Price block -->
+              <div class="price-block m-b-20">
+                @if (pkg.quoteOnly) {
+                <div class="f-s-24 f-w-700">Custom Pricing</div>
+                <div class="f-s-13 text-muted">Scoped to your sites</div>
+                } @else {
+                @if (pkg.listFee) {
+                <div class="list-fee">MVR {{ pkg.listFee | number }}</div>
+                }
+                <div class="d-flex gap-4 price-amount">
+                  <span class="f-s-14 f-w-600 text-muted">MVR</span>
+                  <span class="f-s-34 f-w-700">{{ pkg.monthlyFee | number }}</span>
                 </div>
-                <div class="sla-badge">
-                  <i-tabler name="clock" class="icon-16"></i-tabler>
-                  {{ pkg.responseTime }}
-                </div>
+                <div class="f-s-13 text-muted">per month</div>
+                }
               </div>
 
               <div class="features-list m-b-24">
-                @for (feature of pkg.features; track feature) {
+                @for (item of pkg.highlights; track item) {
                 <div class="feature-item">
                   <i-tabler name="circle-check" class="icon-16 text-success flex-shrink-0"></i-tabler>
-                  <span class="f-s-14">{{ feature }}</span>
+                  <span class="f-s-13">{{ item }}</span>
                 </div>
                 }
               </div>
 
-              <a mat-flat-button [color]="pkg.popular ? 'primary' : 'accent'" class="w-100"
+              <div class="support-badge m-b-20">
+                <i-tabler name="headset" class="icon-16"></i-tabler>
+                {{ pkg.supportLevel }} ICT Support
+              </div>
+
+              <a mat-flat-button [color]="pkg.popular ? 'primary' : 'accent'" class="w-100 m-t-auto"
                 [routerLink]="['/front-pages/contact']"
                 [queryParams]="{ subject: 'IT Support - ' + pkg.title }">
-                Request a Quote
+                {{ pkg.quoteOnly ? 'Request a Quote' : 'Get Started' }}
               </a>
             </mat-card-content>
           </mat-card>
         </div>
         }
       </div>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="comparison-section spacing-top-bottom">
+    <div class="container">
+      <h2 class="f-s-30 f-w-700 text-center m-b-8">Compare Packages</h2>
+      <p class="f-s-15 text-muted text-center m-b-32">
+        A full breakdown of what each package covers.
+      </p>
+
+      <div class="comparison-scroll">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th class="feature-col">Item / Feature</th>
+              @for (pkg of packages; track pkg.id) {
+              <th class="pkg-col" [class.popular]="pkg.popular">{{ pkg.title }}</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of features; track row.label) {
+            <tr>
+              <th scope="row" class="feature-col">{{ row.label }}</th>
+              @for (pkg of packages; track pkg.id) {
+              <td class="pkg-col" [class.popular]="pkg.popular">
+                @if (isIncluded(row.values[pkg.id])) {
+                <i-tabler name="circle-check" class="icon-18 text-success"></i-tabler>
+                <span class="sr-only">Included</span>
+                } @else if (isExcluded(row.values[pkg.id])) {
+                <i-tabler name="minus" class="icon-18 text-muted"></i-tabler>
+                <span class="sr-only">Not included</span>
+                } @else {
+                {{ row.values[pkg.id] }}
+                }
+              </td>
+              }
+            </tr>
+            }
+
+            <!-- Pricing rows -->
+            <tr class="fee-row">
+              <th scope="row" class="feature-col">Monthly Fee (MVR)</th>
+              @for (pkg of packages; track pkg.id) {
+              <td class="pkg-col" [class.popular]="pkg.popular">
+                @if (pkg.quoteOnly) { On request } @else { {{ pkg.listFee | number }} }
+              </td>
+              }
+            </tr>
+            <tr class="fee-row discounted">
+              <th scope="row" class="feature-col">Discounted Monthly Fee (MVR)</th>
+              @for (pkg of packages; track pkg.id) {
+              <td class="pkg-col" [class.popular]="pkg.popular">
+                @if (pkg.quoteOnly) { On request } @else { {{ pkg.monthlyFee | number }} }
+              </td>
+              }
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="text-center m-t-48">
-        <p class="f-s-16 text-muted m-b-16">Need a custom package? We can tailor a plan specifically for your organization.</p>
-        <a mat-stroked-button color="primary" [routerLink]="['/front-pages/contact']">
-          Contact Us for Custom Pricing
+        <p class="f-s-15 text-muted m-b-16">
+          Running more sites than these packages cover? We'll scope a plan around your infrastructure.
+        </p>
+        <a mat-stroked-button color="primary" [routerLink]="['/front-pages/contact']"
+          [queryParams]="{ subject: 'IT Support - Custom Package' }">
+          Talk to Us About a Custom Package
         </a>
       </div>
     </div>

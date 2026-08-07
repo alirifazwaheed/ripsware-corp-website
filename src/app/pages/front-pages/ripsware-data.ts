@@ -19,10 +19,25 @@ export interface SupportPackage {
   id: string;
   title: string;
   subtitle: string;
-  features: string[];
-  sla: string;
-  responseTime: string;
+  businessSize: string;
+  /** Discounted monthly fee in MVR. null on quote-only tiers. */
+  monthlyFee: number | null;
+  /** Undiscounted list fee, shown struck through. null when there is no discount. */
+  listFee: number | null;
+  /** Headline specs for the card; the full breakdown lives in packageFeatures. */
+  highlights: string[];
+  supportLevel: string;
   popular?: boolean;
+  quoteOnly?: boolean;
+}
+
+/**
+ * One row of the package comparison matrix. `values` is keyed by SupportPackage.id
+ * so a column cannot silently shift if the package order changes.
+ */
+export interface PackageFeature {
+  label: string;
+  values: Record<string, string>;
 }
 
 export interface TechItem {
@@ -154,56 +169,149 @@ export const serviceCategories: ServiceCategory[] = [
 
 export const supportPackages: SupportPackage[] = [
   {
-    id: 'single-outlet',
-    title: '1 Outlet Package',
-    subtitle: 'Ideal for small offices and startups',
-    sla: '99.5% Uptime',
-    responseTime: '< 4 hours',
-    features: [
-      'Up to 15 endpoints covered',
-      'Ticket-based support portal',
-      'Remote & on-site assistance',
-      'Monthly health reports',
-      'Basic network monitoring',
-      'Email & phone support',
+    id: 'foundation',
+    title: 'Foundation',
+    subtitle: 'Everything a small office needs to run reliably',
+    businessSize: 'Up to 5 Employees',
+    monthlyFee: 3000,
+    listFee: 4000,
+    supportLevel: 'Normal',
+    highlights: [
+      '1 Office',
+      '1 Server + 1 Storage Server',
+      '1 Internet Connection',
+      'User & email management',
+      'Basic system monitoring',
     ],
   },
   {
-    id: 'two-outlet',
-    title: '2 Outlets Package',
-    subtitle: 'For businesses with multiple locations',
-    sla: '99.7% Uptime',
-    responseTime: '< 2 hours',
+    id: 'momentum',
+    title: 'Momentum',
+    subtitle: 'For growing teams adding a second location',
+    businessSize: 'Up to 10 Employees',
+    monthlyFee: 5000,
+    listFee: 6500,
+    supportLevel: 'Standard',
     popular: true,
-    features: [
-      'Up to 40 endpoints covered',
-      'Priority ticket queue',
-      'Remote & on-site assistance',
-      'Weekly health reports',
-      'Advanced network monitoring',
-      'Dedicated account manager',
-      'Firewall management included',
-      'Quarterly business review',
+    highlights: [
+      '1 Office + 1 Outlet',
+      '1 Server + 1 Storage Server',
+      'Point-to-point fiber link',
+      'Office–outlet connectivity management',
+      'Standard system monitoring',
+    ],
+  },
+  {
+    id: 'summit',
+    title: 'Summit',
+    subtitle: 'Full-coverage ICT support for established businesses',
+    businessSize: '10 to 15 Employees',
+    monthlyFee: 8000,
+    listFee: 10500,
+    supportLevel: 'Priority',
+    highlights: [
+      '1 Office + 1 Outlet',
+      '1 Server + 1 Storage Server',
+      'Point-to-point fiber link',
+      'Advanced system monitoring',
+      'Priority ICT support',
     ],
   },
   {
     id: 'enterprise',
-    title: 'Multi-Outlet / Enterprise',
-    subtitle: 'Scalable support for large organizations',
-    sla: '99.9% Uptime',
-    responseTime: '< 1 hour',
-    features: [
-      'Unlimited endpoints',
-      'Dedicated support team',
-      '24/7 remote monitoring',
-      'Real-time health dashboards',
-      'Full infrastructure management',
-      'Disaster recovery planning',
-      'Compliance & audit support',
+    title: 'Enterprise',
+    subtitle: 'Tailored to organizations with multiple sites',
+    businessSize: '15+ Employees',
+    monthlyFee: null,
+    listFee: null,
+    supportLevel: 'Dedicated',
+    quoteOnly: true,
+    highlights: [
+      'Multiple offices & outlets',
+      'Scaled server & storage capacity',
+      'Redundant connectivity',
+      'Dedicated account management',
       'Custom SLA terms',
-      'On-site engineer (scheduled)',
-      'Executive quarterly review',
     ],
+  },
+];
+
+/**
+ * Full comparison matrix. Foundation / Momentum / Summit values come from the
+ * ICT support package sheet; Enterprise is scoped per engagement.
+ */
+export const packageFeatures: PackageFeature[] = [
+  {
+    label: 'Business Size',
+    values: { foundation: 'Up to 5 Employees', momentum: 'Up to 10 Employees', summit: '10 to 15 Employees', enterprise: '15+ Employees' },
+  },
+  {
+    label: 'Office',
+    values: { foundation: '1 Office', momentum: '1 Office', summit: '1 Office', enterprise: 'Multiple Offices' },
+  },
+  {
+    label: 'Outlet / Branch',
+    values: { foundation: 'Not Included', momentum: '1 Outlet', summit: '1 Outlet', enterprise: 'Multiple Outlets' },
+  },
+  {
+    label: 'Server',
+    values: { foundation: '1 Server', momentum: '1 Server', summit: '1 Server', enterprise: 'Scaled to Requirement' },
+  },
+  {
+    label: 'Storage Server',
+    values: { foundation: '1 Storage Server', momentum: '1 Storage Server', summit: '1 Storage Server', enterprise: 'Scaled to Requirement' },
+  },
+  {
+    label: 'Internet Connection',
+    values: { foundation: '1 Connection', momentum: '1 Connection', summit: '1 Connection', enterprise: 'Redundant Connections' },
+  },
+  {
+    label: 'Point-to-Point Fiber',
+    values: { foundation: 'Not Included', momentum: '1 Connection', summit: '1 Connection', enterprise: 'Multiple Connections' },
+  },
+  {
+    label: 'User & Email Management',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Server Monitoring & Maintenance',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Network Configuration & Support',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Data Access Control & Security',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Centralized Data Storage',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Office–Outlet Connectivity Management',
+    values: { foundation: 'Not Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Advanced System Monitoring',
+    values: { foundation: 'Basic', momentum: 'Standard', summit: 'Advanced', enterprise: 'Custom' },
+  },
+  {
+    label: 'Priority ICT Support',
+    values: { foundation: 'Normal', momentum: 'Standard', summit: 'Priority', enterprise: 'Dedicated' },
+  },
+  {
+    label: 'Licensed Software Protection',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Trade Secret & Data Confidentiality',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
+  },
+  {
+    label: 'Software License Compliance',
+    values: { foundation: 'Included', momentum: 'Included', summit: 'Included', enterprise: 'Included' },
   },
 ];
 

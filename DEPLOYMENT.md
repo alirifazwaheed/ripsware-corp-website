@@ -20,13 +20,17 @@ hashed bundles that haven't finished uploading.
 
 ## Provisioning status
 
-Steps 1 and 2 were completed on 2026-08-07 against `168.144.127.194`
-(`ripsware-prod-1`, Ubuntu 24.04). The droplet also serves `malas.ripsware.com`
-and `api.ripsware.com` (a Node backend proxied on `127.0.0.1:4000`); both were
-verified still healthy afterwards. A backup of the pre-change nginx config sits at
-`/root/nginx-backup-20260807-174424.tar.gz`.
+Completed 2026-08-07 against `168.144.127.194` (`ripsware-prod-1`, Ubuntu 24.04).
+The site is live on the droplet with a Let's Encrypt certificate covering
+`ripsware.com` and `www.ripsware.com`, expiring 2026-11-05 and renewing off
+`certbot.timer` (renewal dry-run passes).
 
-Steps 3–7 still need doing — they require GitHub settings and DNS access.
+The droplet also serves `malas.ripsware.com` and `api.ripsware.com` (a Node
+backend proxied on `127.0.0.1:4000`) under a separate certificate. Both were
+verified healthy after every change. A backup of the pre-change nginx config sits
+at `/root/nginx-backup-20260807-174424.tar.gz`.
+
+The sections below are kept as reference for rebuilding this from scratch.
 
 ---
 

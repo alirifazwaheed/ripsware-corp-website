@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { MaterialModule } from 'src/app/material.module';
 import { FooterComponent } from '../footer/footer.component';
-import { supportPackages } from '../ripsware-data';
+import { packageFeatures, supportPackages } from '../ripsware-data';
 
 @Component({
   selector: 'app-it-support-packages',
@@ -14,4 +14,14 @@ import { supportPackages } from '../ripsware-data';
 })
 export class ItSupportPackagesComponent {
   packages = supportPackages;
+  features = packageFeatures;
+
+  /** Matrix cells are either a yes/no marker or a descriptive value. */
+  isIncluded(value: string): boolean {
+    return value === 'Included';
+  }
+
+  isExcluded(value: string): boolean {
+    return value === 'Not Included';
+  }
 }
