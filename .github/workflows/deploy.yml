@@ -1,20 +1,22 @@
-name: Deploy to GitHub Pages
+name: Deploy to DigitalOcean Droplet
 
 on:
   push:
     branches: [main]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  workflow_dispatch:
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: droplet-deploy
+  cancel-in-progress: false
+
+env:
+  DEPLOY_HOST: ${{ secrets.DROPLET_HOST }}
+  DEPLOY_USER: ${{ secrets.DROPLET_USER }}
+  DEPLOY_PORT: ${{ secrets.DROPLET_PORT || '22' }}
+  DEPLOY_ROOT: /var/www/ripsware
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,19 +30,41 @@ jobs:
 
       - run: npm run build
 
-      - name: Copy index.html to 404.html for SPA routing
-        run: cp dist/Matdash/browser/index.html dist/Matdash/browser/404.html
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          if [ -n "${{ secrets.DROPLET_KNOWN_HOSTS }}" ]; then
+            printf '%s\n' "${{ secrets.DROPLET_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          else
+            echo "::warning::DROPLET_KNOWN_HOSTS secret not set - trusting host key on first sight."
+            ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" > ~/.ssh/known_hosts 2>/dev/null
+          fi
+          chmod 600 ~/.ssh/known_hosts
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist/Matdash/browser
+      # Upload into a per-commit release directory, then flip the `current`
+      # symlink in one atomic rename. Visitors never see a half-synced tree
+      # (an index.html referencing hashed bundles that aren't uploaded yet).
+      - name: Upload release
+        run: |
+          RELEASE="$DEPLOY_ROOT/releases/$GITHUB_SHA"
+          SSH="ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT"
+          $SSH "$DEPLOY_USER@$DEPLOY_HOST" "mkdir -p '$RELEASE'"
+          rsync -az --delete -e "$SSH" \
+            dist/Matdash/browser/ "$DEPLOY_USER@$DEPLOY_HOST:$RELEASE/"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Activate release and prune old ones
+        run: |
+          RELEASE="$DEPLOY_ROOT/releases/$GITHUB_SHA"
+          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" bash -s <<EOF
+            set -euo pipefail
+            ln -sfn '$RELEASE' '$DEPLOY_ROOT/current.tmp'
+            mv -T '$DEPLOY_ROOT/current.tmp' '$DEPLOY_ROOT/current'
+            ls -1dt '$DEPLOY_ROOT'/releases/*/ | tail -n +6 | xargs -r rm -rf
+          EOF
+
+      - name: Clean up SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

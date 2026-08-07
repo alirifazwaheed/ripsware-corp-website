@@ -1,0 +1,7 @@
+# core.autocrlf=true would otherwise give these CRLF line endings in a Windows
+# working tree. They get copied to an Ubuntu droplet as-is, where a CRLF shebang
+# line fails with `$'\r': command not found` and nginx rejects the config.
+*.sh        text eol=lf
+*.conf      text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
